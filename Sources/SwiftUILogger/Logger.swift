@@ -10,7 +10,7 @@ import os.log
 
 var PREVIEW_MODE: Bool = false
 
-enum Logger {
+public enum Logger {
     static func log(
         log: OSLog = .default,
         type: OSLogType = .error,
@@ -39,7 +39,7 @@ enum Logger {
 // MARK: - ❌ DEBUG RELATED
 
 /** short and beautiful print */
-func pp(_ object: Any?) {
+public func pp(_ object: Any?) {
     #if DEBUG
         if let object = object {
             pp("⚪️ \(object)")
@@ -49,19 +49,19 @@ func pp(_ object: Any?) {
     #endif
 }
 
-func pp(_ text: String, terminator: String? = nil) {
+public func pp(_ text: String, terminator: String? = nil) {
     #if DEBUG
         terminator == nil ? print(text) : print(text, terminator: terminator!)
     #endif
 }
 
-func warn(_ text: String) { pp("⚠️ " + text) }
+public func warn(_ text: String) { pp("⚠️ " + text) }
 
-func err(_ text: String, type: Swift.Error = NonFatal.ErrorWithMessage) { pp("❌ " + text) }
+public func err(_ text: String, type: Swift.Error = NonFatal.ErrorWithMessage) { pp("❌ " + text) }
 
-enum NonFatal: Error { case ErrorWithMessage }
+public enum NonFatal: Error { case ErrorWithMessage }
 
-func pp<T>(
+public func pp<T>(
     object: Any?,
 
     className: T.Type,
@@ -91,7 +91,7 @@ func pp<T>(
     #endif
 }
 
-func pp<T>(
+public func pp<T>(
     log: OSLog = .default,
     type: OSLogType = .default,
 
@@ -131,7 +131,7 @@ func pp<T>(
     #endif
 }
 
-func warn<T>(
+public func warn<T>(
     _ text: String,
 
     className: T.Type,
@@ -155,7 +155,7 @@ func warn<T>(
     )
 }
 
-func err<T>(
+public func err<T>(
     _ text: String,
     type _: Swift.Error = NonFatal.ErrorWithMessage,
 
